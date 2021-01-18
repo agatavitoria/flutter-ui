@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 
 class CircleContainer extends StatelessWidget {
   
   final Widget child;
-  final double width, height;
+  final double size;
 
-  CircleContainer({
-   @required this.child,
-    @required this.height,
-    @required this.width,
-  }) : assert(child != null), assert(height != null), assert(width != null);
+  CircleContainer({@required this.child, @required this.size}) : assert(child != null), assert(size != null);
   
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: this.width,
-      height: this.height,
+      width: this.size,
+      height: this.size,
       alignment: Alignment.center,
       child: this.child,
       decoration: BoxDecoration(

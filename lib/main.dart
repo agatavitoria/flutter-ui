@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/pages/home-page.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_ui/pages/image_page.dart';
+import 'package:flutter_ui/pages/splash_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +16,11 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      routes: {
+        ImagePage.routeName : (BuildContext context) => ImagePage(),
+        HomePage.routeName : (_) => HomePage()
+      },
+      home: SplashPage(),
     );
   }
 }
