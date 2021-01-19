@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/widgets/my_appbar.dart';
 
@@ -33,7 +35,33 @@ class _ImagePageState extends State<ImagePage> {
                 onLeftClick: () => Navigator.pop(context),
               ),
               Expanded(
-                child: Center(child: Text('${args.username} is active? ${args.isActive}')),
+                child: Center(
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: 300,
+                        height: 300,
+                        color: Colors.blue,
+                        child: CachedNetworkImage(
+                          imageUrl: 'https://image.freepik.com/vetores-gratis/modelo-realista-de-carnaval-brasileiro_52683-54251.jpg',
+                          fit: BoxFit.cover,
+                          placeholder: (_, __) {
+                            return Center(
+                              child: CupertinoActivityIndicator(
+                                radius: 15,
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      Positioned(
+                        top: 140,
+                        right: 20,
+                        child: Text('OLA MUNDO', style: TextStyle(fontSize: 20, color: Colors.white),),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),

@@ -18,6 +18,7 @@ class _SplashPageState extends State<SplashPage> with AfterLayoutMixin {
 
   @override
   Widget build(BuildContext context) {
+    print('aaaaaaaaa');
     return Scaffold(
       body: Center(
         child: CupertinoActivityIndicator(

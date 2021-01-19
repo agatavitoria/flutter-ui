@@ -3,6 +3,7 @@ import 'package:flutter_ui/pages/home-page.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_ui/pages/image_page.dart';
 import 'package:flutter_ui/pages/splash_page.dart';
+import 'pages/post_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         ImagePage.routeName : (BuildContext context) => ImagePage(),
-        HomePage.routeName : (_) => HomePage()
+        HomePage.routeName : (_) => HomePage(),
+        PostPage.routeName : (_) => PostPage(),
       },
       home: SplashPage(),
     );

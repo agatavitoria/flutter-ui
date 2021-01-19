@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/pages/chat_page.dart';
+import 'package:flutter_ui/pages/post_page.dart';
 import 'package:flutter_ui/widgets/avatar.dart';
 import 'package:flutter_ui/widgets/bottom_menu.dart';
 import 'package:flutter_ui/widgets/circle_container.dart';
 import 'package:flutter_ui/widgets/cronometro.dart';
 import 'package:flutter_ui/widgets/my_appbar.dart';
+import 'package:flutter_ui/widgets/my_btn.dart';
 
 import 'image_page.dart';
 
@@ -18,11 +20,18 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool _isEnabled = false;
+  int _currentPage = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomMenu(
+        currentPage: _currentPage,
+        onChanged: (int newCurrentPage) {
+          setState(() {
+            _currentPage = newCurrentPage;
+          });
+        },
         items: [
           BottomMenuItem(
             urlSvg: 'https://image.flaticon.com/icons/svg/2531/2531393.svg', 
@@ -78,22 +87,25 @@ class _HomePageState extends State<HomePage> {
                     ),
                     _isEnabled ? Cronometro(initTime: 90, fontSize: 40) : Container(),
                     SizedBox(height: 20),
-                    CupertinoButton(
-                      color: Colors.blue,
-                      child: Text('enabled: $_isEnabled'), 
+                    // CupertinoButton(
+                    //   color: Colors.blue,
+                    //   child: Text('enabled: $_isEnabled'), 
+                    //   onPressed: () {
+                    //     setState(() {
+                    //       _isEnabled = !_isEnabled;
+                    //     });
+                    //   },
+                    // ),
+                    // SizedBox(height: 20),
+                    // CupertinoButton(
+                    //   color: Colors.green,
+                    //   child: Text('Go to Chat'), 
+                    //   onPressed: () {},
+                    // ),
+                    MyBtn(
+                      label: "My Posts",
                       onPressed: () {
-                        setState(() {
-                          _isEnabled = !_isEnabled;
-                        });
-                      },
-                    ),
-                    SizedBox(height: 20),
-                    CupertinoButton(
-                      color: Colors.green,
-                      child: Text('Go to Chat'), 
-                      onPressed: () {
-                        // final route = MaterialPageRoute(builder: (BuildContext _)=> ChatPage(username: 'Darwin Morocho',));
-                        // Navigator.push(context, route);
+                        Navigator.pushNamed(context, PostPage.routeName);
                       },
                     ),
                   ],
