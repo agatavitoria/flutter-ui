@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class BottomMenuItem {
-  final String urlSvg;
-  final String label;
+  final String urlSvg, label;
+  final Widget content;  
 
-  BottomMenuItem({@required this.urlSvg, @required this.label});
+  BottomMenuItem({@required this.urlSvg, @required this.label, @required this.content});
 }
 
 class BottomMenu extends StatelessWidget {
