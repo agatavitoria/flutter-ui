@@ -5,12 +5,16 @@ class MyBtn extends StatelessWidget {
   final String label;
   final VoidCallback onPressed;
   final Color backgroundColor, textColor;
+  final bool fullWidth;
+  final EdgeInsets padding;
 
   MyBtn({
     @required this.label,
     this.onPressed,
     this.backgroundColor,
     this.textColor,
+    this.padding,
+    this.fullWidth = false,
   });
 
   @override
@@ -19,20 +23,33 @@ class MyBtn extends StatelessWidget {
       minSize: 30,
       padding: EdgeInsets.zero,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 35, vertical: 15),
+        width: fullWidth ? double.infinity : null,
+        padding:
+            this.padding ?? EdgeInsets.symmetric(horizontal: 30, vertical: 18),
         child: Text(
           this.label,
-          style: TextStyle(color: this.textColor ?? Colors.black, fontWeight: FontWeight.w500),
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              color: this.textColor ?? Colors.black,
+              fontWeight: FontWeight.w500,
+              letterSpacing: 0.5),
         ),
         decoration: BoxDecoration(
           color: this.backgroundColor ?? Colors.white,
-          borderRadius: BorderRadius.circular(25),
+          borderRadius: BorderRadius.circular(30),
           boxShadow: [
-            BoxShadow(color: Colors.black26, blurRadius: 5),
+            BoxShadow(
+              color: Colors.black38,
+              blurRadius: 10,
+              offset: Offset(0, 5),
+            ),
           ],
         ),
       ),
-      onPressed: onPressed,
+      onPressed: () {
+        FocusScope.of(context).unfocus();
+        this.onPressed();
+      },
     );
   }
 }

@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/pages/chat_page.dart';
-import 'package:flutter_ui/pages/page_home_tabs/history_tab.dart';
-import 'package:flutter_ui/pages/page_home_tabs/home_tab.dart';
-import 'package:flutter_ui/pages/page_home_tabs/more_tab.dart';
-import 'package:flutter_ui/pages/page_home_tabs/oferts_tab.dart';
+import 'package:flutter_ui/pages/home_page_tabs/history_tab.dart';
+import 'package:flutter_ui/pages/home_page_tabs/home_tab.dart';
+import 'package:flutter_ui/pages/home_page_tabs/more_tab.dart';
+import 'package:flutter_ui/pages/home_page_tabs/oferts_tab.dart';
 import 'package:flutter_ui/widgets/bottom_menu.dart';
 import 'package:flutter_ui/widgets/my_appbar.dart';
 

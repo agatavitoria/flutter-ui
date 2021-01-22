@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ui/pages/home-page.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_ui/pages/image_page.dart';
+import 'package:flutter_ui/pages/login_page.dart';
 import 'package:flutter_ui/pages/splash_page.dart';
 import 'pages/post_page.dart';
 
@@ -15,14 +16,23 @@ class MyApp extends StatelessWidget {
 
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      routes: {
-        ImagePage.routeName : (BuildContext context) => ImagePage(),
-        HomePage.routeName : (_) => HomePage(),
-        PostPage.routeName : (_) => PostPage(),
+    return GestureDetector(
+      onTap: () {
+        final FocusScopeNode focus = FocusScope.of(context);
+        if (!focus.hasPrimaryFocus) {
+          focus.unfocus();
+        }
       },
-      home: SplashPage(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        routes: {
+          ImagePage.routeName : (BuildContext context) => ImagePage(),
+          HomePage.routeName : (_) => HomePage(),
+          PostPage.routeName : (_) => PostPage(),
+          LoginPage.routeName : (_) => LoginPage(),
+        },
+        home: SplashPage(),
+      ),
     );
   }
 }
