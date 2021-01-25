@@ -31,3 +31,75 @@
 //     IconButton(icon: Icon(Icons.more_vert), onPressed: (){}),
 //   ],
 // ),
+
+// Container(
+//   height: 120,
+//   child: ListView.builder(
+//     itemBuilder: (_, index) {
+//       return Container(
+//         width: 120,
+//         height: 120,
+//         margin: EdgeInsets.all(5),
+//         color: Colors.black12,
+//       );
+//     },
+//     itemCount: 10,
+//     scrollDirection: Axis.horizontal,
+//   ),
+// ),
+// SizedBox(height: 10),
+// Container(
+//   height: 120,
+//   child: ListView.builder(
+//     itemBuilder: (_, index) {
+//       return Container(
+//         width: 120,
+//         height: 120,
+//         margin: EdgeInsets.all(5),
+//         color: Colors.black12,
+//       );
+//     },
+//     itemCount: 10,
+//     scrollDirection: Axis.horizontal,
+//   ),
+// ),
+// SizedBox(height: 10),
+// Container(
+//   height: 120,
+//   child: ListView.builder(
+//     itemBuilder: (_, index) {
+//       return Container(
+//         width: 120,
+//         height: 120,
+//         margin: EdgeInsets.all(5),
+//         color: Colors.black12,
+//       );
+//     },
+//     itemCount: 10,
+//     scrollDirection: Axis.horizontal,
+//   ),
+// ),
+// SizedBox(height: 10),
+// _isEnabled ? Cronometro(initTime: 90, fontSize: 40) : Container(),
+// SizedBox(height: 20),
+// CupertinoButton(
+//   color: Colors.blue,
+//   child: Text('enabled: $_isEnabled'),
+//   onPressed: () {
+//     setState(() {
+//       _isEnabled = !_isEnabled;
+//     });
+//   },
+// ),
+// SizedBox(height: 20),
+// CupertinoButton(
+//   color: Colors.green,
+//   child: Text('Go to Chat'),
+//   onPressed: () {},
+// ),
+// MyBtn(
+//   label: "My Posts",
+//   onPressed: () {
+//     Navigator.pushNamed(context, PostPage.routeName);
+//   },
+// ),

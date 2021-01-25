@@ -48,8 +48,13 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-    # - assets/icon/menu.svg
+  assets:
+    - assets/icon/logout.svg
+    - assets/icon/down_arrow.svg
+    - assets/icon/security.svg
+    - assets/icon/bell.svg
+    - assets/icon/right-arrow.svg
+    - assets/icon/email.svg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/pages/home-page.dart';
+import 'package:flutter_ui/utils/dialogs.dart';
 import 'package:flutter_ui/widgets/my_btn.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -33,10 +34,17 @@ class _LoginPageState extends State<LoginPage> {
 
   _submit() async {
     final bool ehValido = _formKey.currentState.validate();
-    if (ehValido) {
+    if (ehValido && _email == '@') {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setBool("wasLogin", true);
       Navigator.pushReplacementNamed(context, HomePage.routeName);
+    } else {
+      await Dialogs.alert(
+        context,
+        title: 'ERROR',
+        body: 'E-mail ou senha incorretos!',
+      );
+      print('aaaa');
     }
   }
 
@@ -134,7 +142,10 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                   decoration: BoxDecoration(
                                     border: Border(
-                                      bottom: BorderSide(width: 1, color: Color(0xff0D47A1),),
+                                      bottom: BorderSide(
+                                        width: 1,
+                                        color: Color(0xff0D47A1),
+                                      ),
                                     ),
                                   ),
                                 ),
