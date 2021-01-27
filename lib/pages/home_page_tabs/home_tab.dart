@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/api/account_api.dart';
-import 'package:flutter_ui/widgets/circle_container.dart';
 import 'package:shimmer/shimmer.dart';
 
 class HomeTab extends StatefulWidget {
