@@ -39,7 +39,7 @@ class BottomMenu extends StatelessWidget {
                     children: [
                       SvgPicture.network(
                         item.urlSvg,
-                        width: 35,
+                        width: 30,
                         color: isActive ? Colors.blue : Colors.black,
                       ),
                       // Icon(item.icone, size: 35, color: Colors.black),
@@ -47,7 +47,7 @@ class BottomMenu extends StatelessWidget {
                       Text(
                         item.label,
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 10,
                           color:  isActive ? Colors.blue : Colors.black,
                         ),
                       ),

@@ -1,6 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui/api/account_api.dart';
+import 'package:flutter_ui/api/youtube_api.dart';
+import 'package:flutter_ui/models/play_list.dart';
+import 'package:flutter_ui/pages/home_page_widgets/top_play_lists.dart';
 import 'package:shimmer/shimmer.dart';
 
 class HomeTab extends StatefulWidget {
@@ -10,7 +14,10 @@ class HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<HomeTab> {
   AccountAPI _accountAPI = AccountAPI();
+  YouTubeAPI _youTubeAPI =
+      new YouTubeAPI(apiKey: "your api key");
   List<dynamic> _users = [];
+  List<PlayList> _playLists = [];
   bool _isLoading = true;
 
   @override
@@ -21,8 +28,11 @@ class _HomeTabState extends State<HomeTab> {
 
   _load() async {
     final users = await _accountAPI.getUsers(1);
+    final List<PlayList> playLists =
+        await _youTubeAPI.getPlayLists("UCwXdFgeE9KYzlDdR7TG9cMw");
     setState(() {
       _users.addAll(users);
+      _playLists.addAll(playLists);
       _isLoading = false;
     });
   }
@@ -51,7 +61,7 @@ class _HomeTabState extends State<HomeTab> {
                 ],
               ),
             ),
-            gradient: LinearGradient(colors: [Colors.white, Color(0xfff0f0f0)]),
+            gradient: LinearGradient(colors: [Colors.white, Color(0xffdddddd)]),
           );
         },
         itemCount: 7,
@@ -66,32 +76,43 @@ class _HomeTabState extends State<HomeTab> {
       children: [
         _isLoading
             ? _shimmer()
-            : Container(
-                height: 110,
-                child: ListView.builder(
-                  itemBuilder: (_, index) {
-                    final dynamic item = _users[index];
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints(minWidth: 80),
-                        child: Column(
-                          children: [
-                            Expanded(
-                              child: ClipOval(
-                                child: Image.network(item['avatar']),
-                              ),
+            : Column(
+                children: [
+                  Container(
+                    height: 110,
+                    child: ListView.builder(
+                      itemBuilder: (_, index) {
+                        final dynamic item = _users[index];
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(minWidth: 80),
+                            child: Column(
+                              children: [
+                                Expanded(
+                                  child: ClipOval(
+                                    child: CachedNetworkImage(
+                                      imageUrl: item['avatar'],
+                                      placeholder: (_, __) =>
+                                          CupertinoActivityIndicator(
+                                        radius: 15,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Text(item['first_name'])
+                              ],
                             ),
-                            Text(item['first_name'])
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                  itemCount: _users.length,
-                  scrollDirection: Axis.horizontal,
-                ),
-              )
+                          ),
+                        );
+                      },
+                      itemCount: _users.length,
+                      scrollDirection: Axis.horizontal,
+                    ),
+                  ),
+                  TopPlayLists(items: _playLists),
+                ],
+              ),
       ],
     );
   }
